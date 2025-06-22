@@ -1,0 +1,49 @@
+1. Time and Space Complexity (How Fast and How Much Memory)
+Recursive Function:
+java
+Copy
+Edit
+public static double forecastRecursive(double currentValue, double growthRate, int years) {
+    if (years == 0) {
+        return currentValue;
+    }
+    return forecastRecursive(currentValue, growthRate, years - 1) * (1 + growthRate);
+}
+Time Complexity:
+The function runs once for every year.
+
+Each step just does one multiplication.
+
+So, the total time it takes is O(n) (n = number of years).
+
+Space Complexity:
+Each recursive call uses memory in the call stack.
+
+For n years, there are n calls.
+
+So, memory used is also O(n).
+
+2. How to Make It Better (Optimization)
+We can use a loop instead of recursion to make it more efficient.
+
+Iterative Version:
+java
+Copy
+Edit
+public static double forecastIterative(double currentValue, double growthRate, int years) {
+    for (int i = 0; i < years; i++) {
+        currentValue *= (1 + growthRate);
+    }
+    return currentValue;
+}
+Benefits:
+No function calls → faster.
+
+Uses the same small amount of memory, no matter how big n is (O(1)).
+
+Better for large number of years.
+
+3. Summary Table
+Approach	Time	Memory	Best For
+Recursive	O(n)	O(n)	Simple logic, small number of years
+Iterative	O(n)	O(1)	Large number of years, faster and safer
